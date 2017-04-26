@@ -18,7 +18,7 @@ readonly ZIPFILE_ROOT_FOLDER=${ZIPFILE_ROOT_FOLDER:-'irc-version_0_4_8'}
 readonly TARBALL=${2:-'python-irclib-0.4.8.tar.gz'}
 
 
-readonly FIXED_SPECFILE_TEMPLATE="$(pwd)/python-irclib.spec"
+readonly FIXED_SPECFILE_TEMPLATE="$(pwd)/python-irclib.spec.in"
 
 readonly WORK_DIR=${3:-$(mktemp -d)}
 
