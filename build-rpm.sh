@@ -19,7 +19,7 @@ readonly TARBALL=${2:-'python-irclib-0.4.8.tar.gz'}
 
 readonly FIXED_SPECFILE_TEMPLATE="$(pwd)/python-irclib.spec"
 
-readonly WORK_DIR=${3:-$(pwd)}
+readonly WORK_DIR=${3:-$(mktemp -d)}
 
 echo "1 - Checking that required packages are installed"
 yum install -y python wget unzip zip make tar rpm-build
