@@ -10,6 +10,7 @@
 #   $ docker run --workdir "$(pwd)" -v $(pwd):$(pwd) -ti docker.io/fedora /bin/bash
 #   # ./build-rpm.sh
 #
+set -e
 
 readonly ZIPFILE_URL=${1:-'https://github.com/jaraco/irc/archive/version_0_4_8.zip'}
 readonly ZIPFILE_ROOT_FOLDER=${ZIPFILE_ROOT_FOLDER:-'irc-version_0_4_8'}
