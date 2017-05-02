@@ -47,7 +47,10 @@ else
 fi
 cd -
 
-echo "5 - Generate RPM"
+echo "5 - Cheap trick: create required python26 by linking it to installed python"
+ln -s /usr/bin/python /usr/bin/python2.6
+
+echo "6 - Generate RPM"
 rpmbuild --define "_topdir ${WORK_DIR}" -bb "${BUILD_DIR}/${ZIPFILE_ROOT_FOLDER}/python-irclib.spec"
 if [ ! -e ${WORK_DIR}/RPMS/noarch/*.rpm ]; then
   echo "No RPM generated."
@@ -55,5 +58,5 @@ if [ ! -e ${WORK_DIR}/RPMS/noarch/*.rpm ]; then
 else
   cp ${WORK_DIR}/RPMS/noarch/*.rpm .
 fi
-echo "6 - Clean up - delete both build directory and RPM work directory"
+echo "7 - Clean up - delete both build directory and RPM work directory"
 rm -rf "${BUILD_DIR}" "${WORK_DIR}"

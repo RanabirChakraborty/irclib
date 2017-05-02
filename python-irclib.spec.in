@@ -27,7 +27,7 @@ python -c "import py_compile; py_compile.compile('ircbot.py')"
 
 %install
 [ "$RPM_BUILD_ROOT" != "/" ] && rm -rf $RPM_BUILD_ROOT
-SITE_PACKAGES_DIR=`python -c "from distutils.sysconfig import get_python_lib; print get_python_lib()"`
+SITE_PACKAGES_DIR='/usr/lib/python2.6/site-packages'
 %{__mkdir_p} $RPM_BUILD_ROOT${SITE_PACKAGES_DIR}
 %{__install} -m 644 irclib.py* $RPM_BUILD_ROOT${SITE_PACKAGES_DIR}
 %{__install} -m 644 ircbot.py* $RPM_BUILD_ROOT${SITE_PACKAGES_DIR}
