@@ -8,6 +8,7 @@ URL: http://python-irclib.sourceforge.net
 Source: %{name}-%{version}.tar.gz
 BuildRoot: %{_tmppath}/%{name}-root
 Requires: python
+BuildRequires: python
 BuildArch: noarch
 
 %description
@@ -26,9 +27,10 @@ python -c "import py_compile; py_compile.compile('ircbot.py')"
 
 %install
 [ "$RPM_BUILD_ROOT" != "/" ] && rm -rf $RPM_BUILD_ROOT
-%{__mkdir_p} $RPM_BUILD_ROOT/usr/lib/python/site-packages
-%{__install} -m 644 irclib.py* $RPM_BUILD_ROOT/usr/lib/python/site-packages
-%{__install} -m 644 ircbot.py* $RPM_BUILD_ROOT/usr/lib/python/site-packages
+SITE_PACKAGES_DIR=`python -c "from distutils.sysconfig import get_python_lib; print get_python_lib()"`
+%{__mkdir_p} $RPM_BUILD_ROOT${SITE_PACKAGES_DIR}
+%{__install} -m 644 irclib.py* $RPM_BUILD_ROOT${SITE_PACKAGES_DIR}
+%{__install} -m 644 ircbot.py* $RPM_BUILD_ROOT${SITE_PACKAGES_DIR}
 
 %clean
 [ "$RPM_BUILD_ROOT" != "/" ] && rm -rf $RPM_BUILD_ROOT
